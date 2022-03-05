@@ -43,20 +43,20 @@ export class DataApiService {
 	// 	.pipe(map(data => data));
 //}
 	getAllTixs(){
-		const url_api = 'http://192.168.0.130:3070/api/tixes?filter[where][status]=activated';
+		const url_api = 'https://db.buckapi.com:3070/api/tixes?filter[where][status]=activated';
 		return this.http.get(url_api);
 	}
  		getTamano(){
-	 	const url_api = 'http://192.168.0.130:3070/api/order?filter[where][orderType]=appointment';
+	 	const url_api = 'https://db.buckapi.com:3070/api/order?filter[where][orderType]=appointment';
 	 	return (this.orders = this.http.get(url_api));
 	 }
 	getAllQuotes(){
-		const url_api = 'http://192.168.0.130:3070/api/order?filter[where][orderType]=appointment';
+		const url_api = 'https://db.buckapi.com:3070/api/order?filter[where][orderType]=appointment';
 		return this.http.get(url_api);
 	}
 		saveTixFree(tix :TixInterface){
 	//	let token = this.authService.getToken();
-		const url_api='http://192.168.0.130:3070//api/tixes';
+		const url_api='https://db.buckapi.com:3070//api/tixes';
 		return this.http
 		.post<TixInterface>(url_api, tix)
 		.pipe(map(data => data));
@@ -66,15 +66,15 @@ export class DataApiService {
 	// 	return (this.tixs = this.http.get(url_api));
 	// }
  		getAllTixsReturn(){
-		const url_api = 'http://192.168.0.130:3070/api/tixes?filter[where][status]=activated';
+		const url_api = 'https://db.buckapi.com:3070/api/tixes?filter[where][status]=activated';
 		return (this.tixs = this.http.get(url_api));
 	}
 	getAllQuotesReturn(){
-		const url_api = 'http://192.168.0.130:3070/api/quotes?filter[where][flag]=svv';
+		const url_api = 'https://db.buckapi.com:3070/api/quotes?filter[where][flag]=svv';
 		return (this.quotes = this.http.get(url_api));
 	}
 	getAllCardsReturn(){
-		const url_api = 'http://192.168.0.130:3070/api/card?filter[where][status]=new';
+		const url_api = 'https://db.buckapi.com:3070/api/card?filter[where][status]=new';
 		return (this.cards = this.http.get(url_api));
 	}
 	// getAllTixsInitload(){
