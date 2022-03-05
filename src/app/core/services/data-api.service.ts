@@ -5,7 +5,10 @@ import { map } from 'rxjs/operators';
 
  import { TixInterface } from '../models/tix-interface';
 // import { SaleInterface } from '../models/sale-interface';
+import { CardInterface } from '../models/card-interface';
 import { OrderInterface } from '../models/order-interface';
+import { UserInterface } from '../models/user-interface';
+import { QuoteInterface } from '../models/quote-interface';
 // import { InfoInterface } from '../models/info-interface';
 import { UserWService } from "./user-w.service";
 
@@ -17,6 +20,11 @@ export class DataApiService {
 	 orders: Observable<any>;
 	 tix: Observable<any>; 
 	 tixs: Observable<any>;
+	 card: Observable<any>; 
+	 cards: Observable<any>;
+	 quote: Observable<any>; 
+	 quotes: Observable<any>;
+	 users: Observable<any>;
 	// sale: Observable<any>;
 	order: Observable<any>;
   constructor(
@@ -35,20 +43,20 @@ export class DataApiService {
 	// 	.pipe(map(data => data));
 //}
 	getAllTixs(){
-		const url_api = 'hhttps://db.penguinscleaning.ca:3022/api/tixes?filter[where][status]=activated';
+		const url_api = 'http://192.168.0.130:3070/api/tixes?filter[where][status]=activated';
 		return this.http.get(url_api);
 	}
  		getTamano(){
-	 	const url_api = 'https://db.penguinscleaning.ca:3022/api/order?filter[where][orderType]=appointment';
+	 	const url_api = 'http://192.168.0.130:3070/api/order?filter[where][orderType]=appointment';
 	 	return (this.orders = this.http.get(url_api));
 	 }
 	getAllQuotes(){
-		const url_api = 'https://db.penguinscleaning.ca:3022/api/order?filter[where][orderType]=appointment';
+		const url_api = 'http://192.168.0.130:3070/api/order?filter[where][orderType]=appointment';
 		return this.http.get(url_api);
 	}
 		saveTixFree(tix :TixInterface){
 	//	let token = this.authService.getToken();
-		const url_api='https://db.penguinscleaning.ca:3022/api/tixes';
+		const url_api='http://192.168.0.130:3070//api/tixes';
 		return this.http
 		.post<TixInterface>(url_api, tix)
 		.pipe(map(data => data));
@@ -58,10 +66,17 @@ export class DataApiService {
 	// 	return (this.tixs = this.http.get(url_api));
 	// }
  		getAllTixsReturn(){
-		const url_api = 'https://db.penguinscleaning.ca:3022/api/tixes?filter[where][status]=activated';
+		const url_api = 'http://192.168.0.130:3070/api/tixes?filter[where][status]=activated';
 		return (this.tixs = this.http.get(url_api));
 	}
-
+	getAllQuotesReturn(){
+		const url_api = 'http://192.168.0.130:3070/api/quotes?filter[where][flag]=svv';
+		return (this.quotes = this.http.get(url_api));
+	}
+	getAllCardsReturn(){
+		const url_api = 'http://192.168.0.130:3070/api/card?filter[where][status]=new';
+		return (this.cards = this.http.get(url_api));
+	}
 	// getAllTixsInitload(){
 	// 	const url_api = 'https://db.buckapi.com:3025/api/tixes?filter[where][initload]=activated';
 	// 	return this.http.get(url_api);

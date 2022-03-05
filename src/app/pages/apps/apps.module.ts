@@ -14,10 +14,12 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 
 import { CalendarComponent } from './calendar/calendar.component';
 import { ProjectsComponent } from './projects/projects.component';
+import { UsersComponent } from './users/users.component';
+import { QuotesComponent } from './quotes/quotes.component';
 import { NewprojectComponent } from './newproject/newproject.component';
 
 @NgModule({
-    declarations: [CalendarComponent,ProjectsComponent,NewprojectComponent],
+    declarations: [CalendarComponent,UsersComponent,ProjectsComponent,QuotesComponent,NewprojectComponent],
     imports: [
         CommonModule,
         FormsModule,
