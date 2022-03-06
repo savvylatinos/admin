@@ -46,10 +46,18 @@ export class DataApiService {
 		const url_api = 'https://db.buckapi.com:3070/api/tixes?filter[where][status]=activated';
 		return this.http.get(url_api);
 	}
- 		getTamano(){
-	 	const url_api = 'https://db.buckapi.com:3070/api/quote?filter[where][flag]=svv';
+ 		getTamanoQuotes(){
+	 	const url_api = 'https://db.buckapi.com:3070/api/quotes?filter[where][flag]=svv';
 	 	return (this.quotes = this.http.get(url_api));
 	 }
+	 getTamanoCards(){
+		const url_api = 'https://db.buckapi.com:3070/api/card?filter[where][status]=new';
+		return (this.cards = this.http.get(url_api));
+	}
+	 getTamano(){
+		const url_api = 'https://db.buckapi.com:3070/api/tixes?filter[where][status]=activated';
+		return (this.tixs = this.http.get(url_api));
+	}
 	getAllQuotes(){
 		const url_api = 'https://db.buckapi.com:3070/api/order?filter[where][orderType]=appointment';
 		return this.http.get(url_api);

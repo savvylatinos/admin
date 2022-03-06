@@ -27,9 +27,9 @@ export class DashboardComponent implements OnInit {
   targetsBarChart: ChartType;
   salesDonutChart: ChartType;
   ordersData: OrdersTable[];
-  public getTamano(){
+  public getTamanoQuotes(){
     this.dataApiService
-    .getTamano()
+    .getTamanoQuotes()
     .subscribe((res:any) => {
       if (res[0] === undefined){
         return
@@ -39,9 +39,22 @@ export class DashboardComponent implements OnInit {
         }
       });
   }
+  public getTamanoCards(){
+    this.dataApiService
+    .getTamanoCards()
+    .subscribe((res:any) => {
+      if (res[0] === undefined){
+        return
+        }else{
+         this._uw.totalCards = res.length;
+        // this._uw.ordersA=res;
+        }
+      });
+  }
   ngOnInit() {
-  this.getTamano();
-    /**
+  this.getTamanoQuotes();
+  this.getTamanoCards();  
+  /**
      * Fetches the data
      */
     this._fetchData();
