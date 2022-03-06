@@ -47,8 +47,8 @@ export class DataApiService {
 		return this.http.get(url_api);
 	}
  		getTamano(){
-	 	const url_api = 'https://db.buckapi.com:3070/api/order?filter[where][orderType]=appointment';
-	 	return (this.orders = this.http.get(url_api));
+	 	const url_api = 'https://db.buckapi.com:3070/api/quote?filter[where][flag]=svv';
+	 	return (this.quotes = this.http.get(url_api));
 	 }
 	getAllQuotes(){
 		const url_api = 'https://db.buckapi.com:3070/api/order?filter[where][orderType]=appointment';

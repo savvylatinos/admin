@@ -68,6 +68,7 @@ export class UserWService {
 	totalProducts:number=0;
 	totalTixs:number;
 	totalOrders:number;
+	totalQuotes:number;
 	type:string;
 	typeGlobal:boolean=false;
 	typeSize:boolean=false;

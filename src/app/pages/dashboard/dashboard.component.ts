@@ -34,8 +34,8 @@ export class DashboardComponent implements OnInit {
       if (res[0] === undefined){
         return
         }else{
-         this._uw.totalOrders = res.length;
-         this._uw.ordersA=res;
+         this._uw.totalQuotes = res.length;
+        // this._uw.ordersA=res;
         }
       });
   }
