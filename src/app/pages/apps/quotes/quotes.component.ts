@@ -21,6 +21,7 @@ export class QuotesComponent implements OnInit {
     public tix:TixInterface;
     public tixs:TixInterface;
     public quote:QuoteInterface;
+    public quoteDetail:QuoteInterface;
     public quotes:QuoteInterface;
   breadCrumbItems: Array<{}>;
   constructor(  private dataApi: DataApiService,
@@ -42,9 +43,14 @@ export class QuotesComponent implements OnInit {
         }
      });  
     }
-
+    loadDetail(quote:QuoteInterface){
+      let quoteTo=quote;
+      //console.log(email);
+      this.quoteDetail=quoteTo;
+    }
   ngOnInit() {
-         this.getAllQuotes();
+    this.quoteDetail={};
+    this.getAllQuotes();
     this.breadCrumbItems = [{ label: 'Solicitudes', active: true }];
 
     /**

@@ -40,7 +40,7 @@
   <div class="row">
   
 
-    <div class="col-xl-12">
+    <div class="col-xl-8">
       <div class="card">
         <div class="card-body">
             <!-- <a routerLink="../newproject" class="btn btn-primary btn-sm float-right">
@@ -56,6 +56,7 @@
                 <!--   <th scope="col">Customer</th>
                   <th scope="col">Price</th> -->
                   <th scope="col">Status</th>
+                  <th scope="col">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -65,6 +66,7 @@
                  <!--  <td>{{ table.name }}</td>
                   <td>{{ table.price }}</td> -->
                   <td><span> {{ quote.status }}</span></td>
+                  <td><span (click)="loadDetail(quote)" [hidden]="quote.serviceDescription!='Registro CORP'" style="cursor: pointer;">ver detalles </span></td>
                 </tr>
 
               </tbody>
@@ -72,6 +74,128 @@
           </div><!-- end table -->
         </div><!-- end card-body -->
       </div><!-- end card -->
+    </div>
+    <div class="col-xl-4">
+      <div class="card">
+        <div class="card-body">
+          <div class="row pb-3 border-bottom">
+            <div class="col">
+              <div class="dropdown float-right" ngbDropdown [hidden]="quoteDetail.email==undefined">
+                <a href="javascript: void(0);" class="dropdown-toggle arrow-none text-muted" ngbDropdownToggle>
+                  <i class='uil uil-ellipsis-h'></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" ngbDropdownMenu>
+                  <!-- item-->
+                  <a href="javascript:void(0);" class="dropdown-item">
+                    <i class='uil uil-file-upload mr-1'></i>Attachment
+                  </a>
+                  <!-- item-->
+                  <a href="javascript:void(0);" class="dropdown-item">
+                    <i class='uil uil-edit mr-1'></i>Edit
+                  </a>
+                  <!-- item-->
+                  <a href="javascript:void(0);" class="dropdown-item">
+                    <i class='uil uil-file-copy-alt mr-1'></i>Mark as Duplicate
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <!-- item-->
+                  <a href="javascript:void(0);" class="dropdown-item text-danger">
+                    <i class='uil uil-trash-alt mr-1'></i>Delete
+                  </a>
+                </div> <!-- end dropdown menu-->
+              </div> <!-- end dropdown-->
+
+              <div class="custom-control custom-checkbox float-left" [hidden]="quoteDetail.email==undefined">
+                <input type="checkbox" class="custom-control-input" id="completedCheck">
+                <label class="custom-control-label" for="completedCheck">
+                  Marcar comocompletada
+                </label>
+              </div> <!-- end custom-checkbox-->
+            </div>
+          </div>
+
+          <div class="row" *ngIf="quoteDetail!=undefined">
+            <div class="col" [hidden]="quoteDetail.email==undefined">
+              <h4 class="mt-3" >Detalle de la solicitud LLC</h4>
+
+              <div class="row">
+                <div class="col-6">
+                  <!-- assignee -->
+                  <div class="media">
+                    <!-- <img src="assets/images/users/avatar-9.jpg" alt="Arya S" class="rounded-circle mr-2" height="24" /> -->
+                    <div class="media-body">
+                      <h5 class="mt-1 font-size-14">
+                        Empresa
+                      </h5>
+                    </div>
+                  </div>
+                  <p class="mt-2 mb-1 text-muted">{{quoteDetail.companyName}}</p>
+                  <!-- end assignee -->
+                </div> <!-- end col -->
+
+                <div class="col-6">
+                  <!-- start due date -->
+                  <div class="media">
+                    <i class='uil uil-schedule font-18 text-success mr-1'></i>
+                    <div class="media-body">
+                      <h5 class="mt-1 font-size-14"># Acciones
+                   </h5>
+                    </div>
+                  </div>
+                  <p class="mt-2 mb-1 text-muted">{{quoteDetail.actionsNumber}}   </p>
+                  <!-- end due date -->
+                </div> <!-- end col -->
+              </div> <!-- end row -->
+
+              <!-- task description -->
+              <div class="row mt-3">
+                <div class="col">
+                  <div id="taskDesk">
+                    <h5 class="mt-1 font-size-14">
+                      Email titular
+                    </h5>
+                    <p>{{quoteDetail.email}}</p>
+                    <h5 class="mt-1 font-size-14">
+                      Descripcion
+                    </h5>
+                    <p>{{quoteDetail.description}}</p>
+                    
+                    <h5 class="mt-1 font-size-14">
+                      Miembros
+                    </h5>
+                    <ul>
+                      <li>{{quoteDetail.presidentName}} (Presidente)</li>
+                      <li>{{quoteDetail.directorName}} (Director)</li>
+                      <li>{{quoteDetail.secretaryName}} (Secretario)</li>
+                      <li>{{quoteDetail.treasurerName}} (Tesorero)</li>
+                    </ul>
+                    <h5 class="mt-1 font-size-14">
+                      Direccion de la empresa
+                    </h5>
+                    <p>{{quoteDetail.companyAddress}}</p>
+                    <h5 class="mt-1 font-size-14">
+                      Direccion de recepcion de documentos
+                    </h5>
+                    <p>{{quoteDetail.recipientAddress}}</p>
+                    <h5 class="mt-1 font-size-14">
+                      Persona de confianza
+                    </h5>
+                    <p>{{quoteDetail.liableName}}</p>
+                  </div>
+                </div> <!-- end col -->
+              </div>
+              <!-- end task description -->
+
+             
+            </div> <!-- end col -->
+            <div class="col" [hidden]="quoteDetail.email!=undefined">
+              <h4 class="mt-3" >Seleccione una solicitud para ver su detalle</h4>
+              <!-- end comments -->
+
+            </div> 
+          </div> <!-- end row-->
+        </div> <!-- end card-body -->
+      </div> <!-- end card-->
     </div>
   </div>
 
